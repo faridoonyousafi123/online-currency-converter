@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>AfghanYouthDev</title>
+  
+  
+  
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+  <div id='app' class='ar-container'>
+    <section>
+      <h1 id='output-converted'><i class="fas fa-balance-scale"></i> Currency <strong>Converter</strong></h1>
+    </section>
+    <div class="result">
+      <span class='output-defined'>{{ calculateResult }}</span>
+    </div>
+
+
+
+    <section class='toggle-this'>
+      <legend class="ar-legend">From:</legend>
+      <select v-model="from" name="" id="">
+        <option :value="currency.id" v-for="currency in formattedCurrency">
+          {{currency.currencyName}}
+        </option>
+      </select>
+    </section>
+
+    <section class='toggle-this'>
+      <legend class="ar-legend">To:</legend>
+      <select v-model="to" name="" id="">
+        <option :value="currency.id" v-for="currency in formattedCurrency">
+          {{currency.currencyName}}
+        </option>
+      </select>
+    </section>
+    
+    <section class='toggle-this'>
+      <legend class="ar-legend">Amount:</legend>
+      <input v-model="amount" id='input-amount' type="number" placeholder="Amount to convert">
+    </section>
+
+    <section class='toggle-this'>
+      <button :disabled="disabled" @click="convertCurrency()" id='btn-convert' class='ar-button'>
+        {{ loading ? 'Converting...' : 'Convert'}}
+      </button>
+    </section>
+
+
+
+    <section>
+      <div class="text-center">
+        <footer class="footer-margins"><span class="fs-13">Powered by</span> 
+          <span class="afg">Afg</span><span class="han">han</span><span class="youth">Youth</span><span class="dev">Dev</span> </footer>
+        </div>
+      </section>
+    </div>
+
+    <datalist id="array-countries"></datalist>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script  src="js/index.js"></script>
+
+
+
+
+
+  </body>
+
+  </html>
