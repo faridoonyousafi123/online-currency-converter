@@ -50,7 +50,7 @@ new Vue({
                 return;
             }
 
-            axios.get('https://free.currencyconverterapi.com/api/v6/currencies')
+            axios.get('https://free.currencyconverterapi.com/api/v6/currencies?apiKey=6e3977dc5f6dcd46c60b')
             .then(response => {
 
                 this.currencies = response.data.results;
@@ -61,14 +61,17 @@ new Vue({
 
         convertCurrency() {
 
+          console.log(this.from);
+          console.log(this.to);
+
             this.loading = true;
 
-          axios.get(`https://free.currencyconverterapi.com/api/v5/convert?q=${this.from}_${this.to}`)
-          .then(response => {
+          axios.get(`https://free.currencyconverterapi.com/api/v5/convert?q=${this.from}_${this.to}&compact=ultra&apiKey=6e3977dc5f6dcd46c60b`
+            ).then(response => {
 
                 this.loading = false;
               
-              this.result = response.data.results[`${this.from}_${this.to}`].val
+              this.result = response.data[`${this.from}_${this.to}`];
           })
 
       },
